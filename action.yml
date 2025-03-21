@@ -1,6 +1,6 @@
 name: 'Styra Init Action'
 description: |
-  This action runs prerequisite check to ensure that common (pre)requirements are met.
+  This action runs prerequisite checks to ensure that common (pre)requirements are met.
 inputs: {}
 outputs: {}
 runs:
