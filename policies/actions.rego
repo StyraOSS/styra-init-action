@@ -11,6 +11,7 @@ allowed_action_refs["actions/checkout"] := {"11bd71901bbe5b1630ceea73d27597364c9
 deny contains msg if {
 	some [name, ref] in actions
 	not is_sha_hash(ref)
+	lower(name) != "styrainc/styra-init-action" # the only exception, this action itself
 	msg := sprintf("action %s uses tag %s, should be pinned to SHA hash", [name, ref])
 }
 
