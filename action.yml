@@ -16,5 +16,5 @@ runs:
     - name: Run Conftest
       shell: bash
       run: |
-        find .github/workflows # debugging
+        mise use -g conftest@0.58.0
         find .github/workflows/ | xargs conftest test -p "${{ github.action_path }}/policies"
