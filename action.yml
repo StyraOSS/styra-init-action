@@ -13,5 +13,6 @@ runs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - name: Run Conftest
+      shell: bash
       run: |
         find .github/workflows/ | xargs conftest test -p "${{ github.action_path }}/policies"
