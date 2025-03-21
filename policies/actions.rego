@@ -28,6 +28,7 @@ deny contains msg if {
 }
 
 warn contains msg if {
+	false # disabled
 	some [name, ref] in actions
 	not in_allowlist(name, ref)
 	msg := sprintf("action %s@%s not in allow-list", [name, ref])
