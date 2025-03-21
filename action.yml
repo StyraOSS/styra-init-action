@@ -1,0 +1,17 @@
+name: 'Styra Init Action'
+description: |
+  This action runs prerequisite check to ensure that common (pre)requirements are met.
+inputs: {}
+outputs: {}
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # ratchet:actions/checkout@v4
+    - uses: jdx/mise-action@5083fe46898c414b2475087cc79da59e7da859e8 # ratchet:jdx/mise-action@v2
+      with:
+        working_directory: ${{ github.action_path }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: Run Conftest
+      run: |
+        find .github/workflows/ | xargs conftest test -p "${{ github.action_path }}/policies"
