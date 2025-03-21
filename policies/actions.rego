@@ -2,7 +2,13 @@ package main
 
 import rego.v1
 
-init_job := "prereqs"
+self := "StyraInc/styra-init-action"
+
+init_job := id if {
+	some id, job in input.jobs
+	some step in job.steps
+	[self, _] = split(step.uses, "@")
+}
 
 allowed_action_refs["actions/setup-node"] := {"39370e3970a6d050c480ffad4ff0ed4d3fdee5af"}
 
