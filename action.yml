@@ -9,10 +9,12 @@ runs:
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # ratchet:actions/checkout@v4
     - uses: jdx/mise-action@5083fe46898c414b2475087cc79da59e7da859e8 # ratchet:jdx/mise-action@v2
       with:
-        working_directory: ${{ github.action_path }}
+        tool_versions: |
+          conftest = "0.58.0"
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - name: Run Conftest
       shell: bash
       run: |
+        find .github/workflows # debugging
         find .github/workflows/ | xargs conftest test -p "${{ github.action_path }}/policies"
