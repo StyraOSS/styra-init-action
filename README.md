@@ -4,11 +4,11 @@ This is a reusable action that tries to enforce some common standards easily.
 
 ## How to use
 
-Add the action to your workflow defintions:
+Add the action to your workflow definitions:
 
 ```diff
 jobs:
-+  prereqs:
++  prereqs: # any name is fine, as long as it's consistent with "needs:" below
 +   name: Prereqs
 +   runs-on: ubuntu-24.04
 +   steps:
