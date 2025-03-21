@@ -17,4 +17,4 @@ runs:
       shell: bash
       run: |
         mise use -g conftest@0.58.0
-        find .github/workflows/ | xargs conftest test -p "${{ github.action_path }}/policies"
+        conftest test -p "${{ github.action_path }}/policies" .github/workflows/*
