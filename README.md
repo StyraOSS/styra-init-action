@@ -33,6 +33,40 @@ Right now, it
 The conftest policies check these things:
 
 1. Every "uses" value in a job's steps needs to use a pinned ref, no tags or branches.
-2. Every job needs to depend on the init job, directly or indirectly.
+2. Every job _of every workflow_ needs to depend on the init job, directly or indirectly.
 
 More policies may be added in the future.
+
+
+## Remediation (How do I fix what it complains about?)
+
+### Use a pinned ref
+
+Wrong:
+
+```yaml
+- uses: third-party/some-thing@v4
+```
+
+Correct:
+
+```yaml
+- uses: third-party/some-thing@11bd71901bbe5b1630ceea73d27597364c9af683
+```
+
+Using pinned refs is a measure against repository takeovers.
+If, for some reason, someone manages to commit malicious code, and updates the tags, a pinned ref would **not be affected**.
+
+#### How to fix:
+
+No need to undertake the daunting task of manually replacing tags with SHAs.
+There are tools that automate pinning refs that make it very easy to do; a couple of the more popular ones are:
+
+- [`pinact`](https://github.com/suzuki-shunsuke/pinact)
+- [`ratchet`](https://github.com/sethvargo/ratchet)
+
+Pinning refs is, however, not a one time task.
+You will want to update your refs occasionally — whether pinned or not — as new legitimate versions become available.
+Both `pinact` and `ratchet` make maintenance easy as well with an available update option.
+
+Furthermore, dependabot will update pinned-ref actions in much the same way as it does for tags, so there's no downside to pinning.
