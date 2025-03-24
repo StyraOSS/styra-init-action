@@ -2,6 +2,12 @@
 
 This is a reusable action that tries to enforce some common standards easily.
 
+> [!IMPORTANT]
+> This action is created by Styra for internal use.
+> **Please don't use it as-is in your own projects**, as there are no guarantees for stability, and extra checks maybe be introduced that will end up breaking your workflows.
+> However, it is shared publicly for inspiration! Feel free to fork and adjust to your organization's requirements.
+
+
 ## How to use
 
 Add the action to your workflow definitions:
@@ -40,6 +46,7 @@ More policies may be added in the future.
 
 ## Remediation (How do I fix what it complains about?)
 
+
 ### Use a pinned ref
 
 Wrong:
@@ -54,8 +61,12 @@ Correct:
 - uses: third-party/some-thing@11bd71901bbe5b1630ceea73d27597364c9af683
 ```
 
+
+#### Why?
+
 Using pinned refs is a measure against repository takeovers.
 If, for some reason, someone manages to commit malicious code, and updates the tags, a pinned ref would **not be affected**.
+
 
 #### How to fix:
 
@@ -70,3 +81,9 @@ You will want to update your refs occasionally — whether pinned or not — as 
 Both `pinact` and `ratchet` make maintenance easy as well with an available update option.
 
 Furthermore, dependabot will update pinned-ref actions in much the same way as it does for tags, so there's no downside to pinning.
+
+
+## Community
+
+For questions, discussions and announcements related to Styra products, services and open source projects, please join
+the Styra community on [Slack](https://inviter.co/styra)!
