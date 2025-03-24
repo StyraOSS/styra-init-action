@@ -16,5 +16,8 @@ runs:
     - name: Run Conftest
       shell: bash
       run: |
+        WORKFLOW="$(awk -F '[/@]' '{print $3"/"$4"/"$5}' <<< $WORKFLOW_REF)"
         mise use -g conftest@0.58.0
-        conftest test -o github -p "${{ github.action_path }}/policies" .github/workflows/*
+        conftest test -o github -p "${{ github.action_path }}/policies" $WORKFLOW
+      env:
+       WORKFLOW_REF: ${{ github.workflow_ref }}

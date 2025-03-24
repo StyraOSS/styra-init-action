@@ -39,7 +39,7 @@ Right now, it
 The conftest policies check these things:
 
 1. Every "uses" value in a job's steps needs to use a pinned ref, no tags or branches.
-2. Every job _of every workflow_ needs to depend on the init job, directly or indirectly.
+2. Every job _of the current workflow_ needs to depend on the init job, directly or indirectly.
 
 More policies may be added in the future.
 
