@@ -14,6 +14,8 @@ allowed_action_refs["actions/setup-node"] := {"39370e3970a6d050c480ffad4ff0ed4d3
 
 allowed_action_refs["actions/checkout"] := {"11bd71901bbe5b1630ceea73d27597364c9af683"}
 
+deny contains "workflow does not use init action" if not init_job
+
 deny contains msg if {
 	some [name, ref] in actions
 	not is_sha_hash(ref)
