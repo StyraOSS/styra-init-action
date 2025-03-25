@@ -71,10 +71,7 @@ If, for some reason, someone manages to commit malicious code, and updates the t
 #### How to fix:
 
 No need to undertake the daunting task of manually replacing tags with SHAs.
-There are tools that automate pinning refs that make it very easy to do; a couple of the more popular ones are:
-
-- [`pinact`](https://github.com/suzuki-shunsuke/pinact)
-- [`ratchet`](https://github.com/sethvargo/ratchet)
+There are tools that automate pinning refs that make it very easy to do; see for example [`pinact`](https://github.com/suzuki-shunsuke/pinact).
 
 Pinning refs is, however, not a one time task.
 You will want to update your refs occasionally — whether pinned or not — as new legitimate versions become available.
