@@ -6,7 +6,7 @@ outputs: {}
 runs:
   using: "composite"
   steps:
-    - uses: jdx/mise-action@5083fe46898c414b2475087cc79da59e7da859e8 # v2.1.11
+    - uses: jdx/mise-action@eb2f5cb41b0a8175dad2f797e3daca6fe7795a19 # v2.4.2
       with:
         tool_versions: |
           conftest 0.58.0
