@@ -1,4 +1,4 @@
-name: 'Styra Init Action'
+name: "Styra Init Action"
 description: |
   This action runs prerequisite checks to ensure that common (pre)requirements are met.
 inputs: {}
@@ -13,6 +13,8 @@ runs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        persist-credentials: false
     - name: Run Conftest
       shell: bash
       run: |
@@ -20,4 +22,4 @@ runs:
         mise use -g conftest@0.58.0
         conftest test -o github -p "${{ github.action_path }}/policies" $WORKFLOW
       env:
-       WORKFLOW_REF: ${{ github.workflow_ref }}
+        WORKFLOW_REF: ${{ github.workflow_ref }}

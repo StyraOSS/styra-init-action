@@ -2,7 +2,7 @@ package main
 
 import rego.v1
 
-self := "StyraInc/styra-init-action"
+self := "StyraOSS/styra-init-action"
 
 init_job := id if {
 	some id, job in input.jobs
@@ -19,7 +19,7 @@ deny contains "workflow does not use init action" if not init_job
 deny contains msg if {
 	some [name, ref] in actions
 	not is_sha_hash(ref)
-	lower(name) != "styrainc/styra-init-action" # the only exception, this action itself
+	lower(name) != "styraoss/styra-init-action" # the only exception, this action itself
 	msg := sprintf("action %s uses tag %s, should be pinned to SHA hash", [name, ref])
 }
 
